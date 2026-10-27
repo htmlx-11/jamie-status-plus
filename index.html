@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>⎷ΛM1Ξ・ẞTΛTUẞ pro</title>
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-[#0a0a0a] text-white min-h-screen flex items-center justify-center p-4">
+
+  <div class="w-full max-w-[400px] bg-[#121212] border border-white/10 rounded-[2rem] p-8">
+    <h1 class="text-center font-bold tracking-[0.2em]">⎷ΛM1Ξ・ẞTΛTUẞ <span class="text-white/40">pro</span></h1>
+    
+    <div class="text-center my-8">
+      <p class="text-white/40 text-xs tracking-widest">YOU PAY</p>
+      <h2 class="text-5xl font-bold mt-2">₦<span id="amtDisplay">1500</span></h2>
+    </div>
+
+    <input id="amountSlider" type="range" min="1000" max="2000" step="100" value="1500" class="w-full accent-white">
+    
+    <div class="flex justify-between text-[10px] text-white/30 mt-2 mb-8 tracking-widest">
+      <span>₦1000</span><span>₦2000</span>
+    </div>
+
+    <a id="payBtn" href="tel:*955*1*1500*9035026013%23" class="block w-full bg-white text-black text-center py-4 rounded-full font-bold">
+      PAY WITH USSD
+    </a>
+
+    <p id="codePreview" class="text-[10px] text-white/30 text-center mt-4 font-mono">*955*1*1500*9035026013#</p>
+  </div>
+
+<script>
+const ACCOUNT = "9035026013";
+const slider = document.getElementById('amountSlider');
+const display = document.getElementById('amtDisplay');
+const btn = document.getElementById('payBtn');
+const preview = document.getElementById('codePreview');
+
+function update() {
+  const amt = slider.value;
+  display.textContent = amt;
+  const ussdRaw = `*955*1*${amt}*${ACCOUNT}#`;
+  const ussdTel = `*955*1*${amt}*${ACCOUNT}%23`;
+  btn.href = `tel:${ussdTel}`;
+  preview.textContent = ussdRaw;
+}
+
+slider.addEventListener('input', update);
+update();
+</script>
+</body>
+</html>
