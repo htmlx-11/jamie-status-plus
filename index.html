@@ -42,7 +42,7 @@ function update() {
   const ussdRaw = `*955*1*${amt}*${ACCOUNT}#`;
   const ussdTel = `*955*1*${amt}*${ACCOUNT}%23`;
   btn.href = `tel:${ussdTel}`;
-  preview.textContent = ussdRaw;
+  //preview.textContent = ussdRaw;
 }
 
 slider.addEventListener('input', update);
